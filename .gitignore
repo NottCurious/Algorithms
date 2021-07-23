@@ -196,3 +196,20 @@ hs_err_pid*
 *.exe
 *.out
 *.app
+
+# Custom
+test.py
+testing.py
+test.cpp
+testing.cpp
+test.c
+testing.c
+test.h
+testing.h
+test.hpp
+testing.hpp
+test.java
+testing.java
+
+inputf.in
+outputf.out
