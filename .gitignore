@@ -213,3 +213,6 @@ testing.java
 
 inputf.in
 outputf.out
+
+# Makefile
+Makefile
