@@ -216,3 +216,6 @@ outputf.out
 
 # Makefile
 Makefile
+
+# Format CPP Files Scripts
+format.bat

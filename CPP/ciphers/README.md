@@ -1,10 +1,10 @@
 Ciphers because Ciphers are cool
 
 Completed:
+* Morse Code
 
 To Do:
 * Base64
 * Ceaser
-* Morse Code
 * uint256
 * xor Cipher
