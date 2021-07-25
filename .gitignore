@@ -219,3 +219,6 @@ Makefile
 
 # Format CPP Files Scripts
 format.bat
+
+# Placeholder.cpp
+placeholder.cpp
