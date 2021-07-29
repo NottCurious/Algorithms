@@ -2,11 +2,11 @@ Math is the best beacuse it has numbers
 
 Completed:
 * Armstrong Number
-
-To Do:
 * Binomial Calculate
 * Check Factorial
 * Check Prime
+
+To Do:
 * Complex Numbers
 * Double Factorial
 * Fast Power

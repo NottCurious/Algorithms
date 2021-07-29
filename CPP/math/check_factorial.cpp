@@ -27,25 +27,11 @@ bool is_factorial(uint64_t n)
 
 void tests()
 {
-    std::cout << "Test 1:\t n=50\n";
     assert(math::factorial::is_factorial(50) == false);
-    std::cout << "passed\n";
-
-    std::cout << "Test 2:\t n=720\n";
     assert(math::factorial::is_factorial(720) == true);
-    std::cout << "passed\n";
-
-    std::cout << "Test 3:\t n=0\n";
     assert(math::factorial::is_factorial(0) == false);
-    std::cout << "passed\n";
-
-    std::cout << "Test 4:\t n=479001600\n";
     assert(math::factorial::is_factorial(479001600) == true);
-    std::cout << "passed\n";
-
-    std::cout << "Test 5:\t n=-24\n";
     assert(math::factorial::is_factorial(-24) == false);
-    std::cout << "passed\n";
 }
 
 int main()
