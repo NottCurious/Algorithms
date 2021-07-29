@@ -1,8 +1,9 @@
 Math is the best beacuse it has numbers
 
 Completed:
-To Do:
 * Armstrong Number
+
+To Do:
 * Binomial Calculate
 * Check Factorial
 * Check Prime
