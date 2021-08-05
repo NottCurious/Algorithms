@@ -1,8 +1,9 @@
 Data Structures are a pain in CPP
 
 Completed:
-To Do:
 * Linked List
+
+To Do:
 * Double Linked List
 * Tree
 * Stack

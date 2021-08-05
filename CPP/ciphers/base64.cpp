@@ -127,5 +127,7 @@ static void test()
 int main()
 {
     test();
+
+    std::cout << ciphers::base64_encoding::base64_encode("Oh God Above, Please Take Me Out of Here") << std::endl;
     return 0;
 }
