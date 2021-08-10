@@ -1,14 +1,17 @@
 #include <iostream>
 #include <list>
 
-struct node {
+struct node
+{
     int val;
     node *left;
     node *right;
 };
 
-void CreateTree(node *curr, node *n, int x, char pos) {
-    if (n != NULL) {
+void CreateTree(node *curr, node *n, int x, char pos)
+{
+    if (n != NULL)
+    {
         char ch;
         std::cout << std::endl << "Left or Right of " << n->val << " : ";
         std::cin >> ch;
@@ -16,25 +19,32 @@ void CreateTree(node *curr, node *n, int x, char pos) {
             CreateTree(n, n->left, x, ch);
         else if (ch == 'r')
             CreateTree(n, n->right, x, ch);
-    } else {
+    }
+    else
+    {
         node *t = new node;
         t->val = x;
         t->left = NULL;
         t->right = NULL;
-        if (pos == 'l') {
+        if (pos == 'l')
+        {
             curr->left = t;
-        } else if (pos == 'r') {
+        }
+        else if (pos == 'r')
+        {
             curr->right = t;
         }
     }
 }
 
-void BFT(node *n) {
+void BFT(node *n)
+{
     std::list<node *> queue;
 
     queue.push_back(n);
 
-    while (!queue.empty()) {
+    while (!queue.empty())
+    {
         n = queue.front();
         std::cout << n->val << "  ";
         queue.pop_front();
@@ -46,31 +56,38 @@ void BFT(node *n) {
     }
 }
 
-void Pre(node *n) {
-    if (n != NULL) {
+void Pre(node *n)
+{
+    if (n != NULL)
+    {
         std::cout << n->val << "  ";
         Pre(n->left);
         Pre(n->right);
     }
 }
 
-void In(node *n) {
-    if (n != NULL) {
+void In(node *n)
+{
+    if (n != NULL)
+    {
         In(n->left);
         std::cout << n->val << "  ";
         In(n->right);
     }
 }
 
-void Post(node *n) {
-    if (n != NULL) {
+void Post(node *n)
+{
+    if (n != NULL)
+    {
         Post(n->left);
         Post(n->right);
         std::cout << n->val << "  ";
     }
 }
 
-int main() {
+int main()
+{
     int value;
     int ch;
     node *root = new node;
@@ -79,7 +96,8 @@ int main() {
     root->val = value;
     root->left = NULL;
     root->right = NULL;
-    do {
+    do
+    {
         std::cout << std::endl << "1. Insert";
         std::cout << std::endl << "2. Breadth First";
         std::cout << std::endl << "3. Preorder Depth First";
@@ -88,7 +106,8 @@ int main() {
 
         std::cout << std::endl << "Enter Your Choice : ";
         std::cin >> ch;
-        switch (ch) {
+        switch (ch)
+        {
         case 1:
             int x;
             char pos;
