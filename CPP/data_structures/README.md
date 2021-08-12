@@ -5,6 +5,6 @@ Completed:
 * Double Linked List
 * Tree
 * Stack
+* Queue
 
 To Do:
-* Queue
