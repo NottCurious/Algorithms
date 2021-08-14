@@ -5,7 +5,11 @@
  * 0x5F3759DF Algorithm
  */
 
-float FastInvSqrt(float num) {
+#include <iostream>
+#include <math.h>
+
+float FastInvSqrt(float num)
+{
     long i;
     float x, y;
     const float threehalfs = 1.5F;
@@ -13,10 +17,18 @@ float FastInvSqrt(float num) {
 
     x = num * half;
     y = num;
-    i = * ( long * ) &y;
+    i = *(long *)&y;
     i = 0x5F3759DF - (i >> 1);
-    y = * (float * ) &i;
-    y = y * ( threehalfs - (x * y * y ));
+    y = *(float *)&i;
+    y = y * (threehalfs - (x * y * y));
 
     return y;
+}
+
+int main()
+{
+    int n = 16;
+
+    std::cout << 1 / (sqrt(n)) << std::endl;
+    std::cout << FastInvSqrt(n) << std::endl;
 }
