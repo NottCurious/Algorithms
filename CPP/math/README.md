@@ -5,6 +5,8 @@ Completed:
 * Binomial Calculate
 * Check Factorial
 * Check Prime
+* Primes up to a Billion
+* Vector Cross Product
 
 To Do:
 * Complex Numbers
@@ -18,7 +20,6 @@ To Do:
 * Power of 2?
 * Prime Factorization
 * Prime Numbers
-* Primes up to a Billion
 * Sum of Binomial Coefficients
-* Vector Cross Product
+
 
