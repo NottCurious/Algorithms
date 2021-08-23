@@ -3,7 +3,8 @@ searching for love, searching for that one torrent site that doesn't give me a v
 if you work for the FBI please ignore the above message thanks
 
 Completed:
-To Do:
 * Binary Search
+
+To Do:
 * Linear Search
 * Hash Search

@@ -1,8 +1,8 @@
-#include <cmath>
 #include <iostream>
+#include <memory>
 #include <vector>
 
-namespace quadratic_probing
+namespace double_hashing
 {
 using Entry = struct Entry;
 bool putProber(const Entry &entry, int key);
@@ -30,14 +30,20 @@ size_t hashFxn(int key)
     return hash(key);
 }
 
-int quadraticProbe(int key, bool searching)
+size_t otherHashFxn(int key)
+{
+    std::hash<int> hash;
+    return 1 + (7 - (hash(key) % 7));
+}
+
+int doubleHash(int key, bool searching)
 {
     int hash = static_cast<int>(hashFxn(key));
     int i = 0;
     Entry entry;
     do
     {
-        size_t index = (hash + static_cast<size_t>(std::round(std::pow(i, 2)))) % totalSize;
+        int index = static_cast<int>(hash + (i * otherHashFxn(key))) % totalSize;
         entry = table[index];
         if (searching)
         {
@@ -65,14 +71,14 @@ int quadraticProbe(int key, bool searching)
             }
             if (!rehashing)
             {
-                std::cout << "Spot taken, looking at next (next index = "
-                          << (hash + static_cast<size_t>(std::round(std::pow(i + 1, 2)))) % totalSize << std::endl;
+                std::cout << "Spot taken, looking at next (next index:"
+                          << " " << static_cast<int>(hash + (i * otherHashFxn(key))) % totalSize << ")" << std::endl;
             }
             i++;
         }
         if (i == totalSize * 100)
         {
-            std::cout << "Quadratic probe failed (infinite loop)" << std::endl;
+            std::cout << "DoubleHash probe failed" << std::endl;
             return notPresent;
         }
     } while (entry.key != notPresent);
@@ -95,16 +101,6 @@ bool searchingProber(const Entry &entry, int key)
         return true;
     }
     return false;
-}
-
-Entry find(int key)
-{
-    int index = quadraticProbe(key, true);
-    if (index == notPresent)
-    {
-        return Entry();
-    }
-    return table[index];
 }
 
 void display()
@@ -134,8 +130,8 @@ void rehash()
     rehashing = true;
     int oldSize = totalSize;
     std::vector<Entry> oldTable(table);
+    table = std::vector<Entry>(totalSize * 2);
     totalSize *= 2;
-    table = std::vector<Entry>(totalSize);
     for (int i = 0; i < oldSize; i++)
     {
         if (oldTable[i].key != -1 && oldTable[i].key != notPresent)
@@ -144,13 +140,14 @@ void rehash()
             add(oldTable[i].key);
         }
     }
+
     rehashing = false;
     std::cout << "Table was rehashed, new size is: " << totalSize << std::endl;
 }
 
 void add(int key)
 {
-    int index = quadraticProbe(key, false);
+    int index = doubleHash(key, false);
     table[index].key = key;
     if (++size / static_cast<double>(totalSize) >= 0.5)
     {
@@ -160,7 +157,7 @@ void add(int key)
 
 void remove(int key)
 {
-    int index = quadraticProbe(key, true);
+    int index = doubleHash(key, true);
     if (index == notPresent)
     {
         std::cout << "key not found" << std::endl;
@@ -195,11 +192,11 @@ void removalInfo(int key)
     std::cout << "New table: ";
     display();
 }
+} // namespace double_hashing
 
-} // namespace quadratic_probing
-using quadratic_probing::Entry;
-using quadratic_probing::table;
-using quadratic_probing::totalSize;
+using double_hashing::Entry;
+using double_hashing::table;
+using double_hashing::totalSize;
 
 int main()
 {
@@ -224,18 +221,18 @@ int main()
         case 1:
             std::cout << "Enter key to add = ";
             std::cin >> key;
-            quadratic_probing::addInfo(key);
+            double_hashing::addInfo(key);
             break;
         case 2:
             std::cout << "Enter key to remove = ";
             std::cin >> key;
-            quadratic_probing::removalInfo(key);
+            double_hashing::removalInfo(key);
             break;
         case 3: {
             std::cout << "Enter key to search = ";
             std::cin >> key;
-            quadratic_probing::Entry entry = quadratic_probing::table[quadratic_probing::quadraticProbe(key, true)];
-            if (entry.key == quadratic_probing::notPresent)
+            Entry entry = table[double_hashing::doubleHash(key, true)];
+            if (entry.key == double_hashing::notPresent)
             {
                 std::cout << "Key not present";
             }
@@ -244,15 +241,14 @@ int main()
         case 4:
             std::cout << "Enter element to generate hash = ";
             std::cin >> key;
-            std::cout << "Hash of " << key << " is = " << quadratic_probing::hashFxn(key);
+            std::cout << "Hash of " << key << " is = " << double_hashing::hashFxn(key);
             break;
         case 5:
-            quadratic_probing::display();
+            double_hashing::display();
             break;
         default:
             loop = false;
             break;
-            // delete[] table;
         }
         std::cout << std::endl;
     }
