@@ -7,11 +7,12 @@ Completed:
 * Check Prime
 * Primes up to a Billion
 * Vector Cross Product
-
-To Do:
 * Complex Numbers
 * Double Factorial
 * Fast Power
+
+To Do:
+
 * Fibonacci
 * gcd of n numbers
 * Largest Power

@@ -4,7 +4,7 @@ if you work for the FBI please ignore the above message thanks
 
 Completed:
 * Binary Search
-
-To Do:
 * Linear Search
 * Hash Search
+
+To Do:

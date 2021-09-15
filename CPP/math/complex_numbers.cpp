@@ -122,6 +122,7 @@ double get_rand()
     return (std::rand() % 100 - 50) / 100.f;
 }
 
+// Copy Pasted
 void tests()
 {
     std::srand(std::time(nullptr));
